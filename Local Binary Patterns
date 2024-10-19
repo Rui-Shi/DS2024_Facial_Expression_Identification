@@ -1,0 +1,72 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from skimage.feature import local_binary_pattern
+from skimage.color import rgb2gray
+
+
+
+
+train_dir = r'C:\Users\whisk\OneDrive\Desktop\ERDOS WORK\train'
+# Define an ImageDataGenerator without augmentation for loading
+datagen = ImageDataGenerator(rescale=1./255)  # Rescale pixel values to [0, 1], nomalization
+
+# Load the images and labels from the directory
+training = datagen.flow_from_directory(train_dir,target_size=(48, 48),batch_size=16,class_mode='categorical',shuffle=False)
+
+
+print(training.class_indices)
+
+def apply_lbp(image, radius, n_points):
+    """
+    Apply Local Binary Pattern (LBP) to an image.
+
+    Parameters:
+    - image: The input image (grayscale).
+    - radius: The radius of the circular LBP neighborhood.
+    - n_points: Number of points to consider in the neighborhood.
+
+    Returns:
+    - LBP feature array.
+    """
+    lbp = local_binary_pattern(image, n_points, radius, method="uniform")
+    return lbp
+
+
+
+if __name__ == '__main__':   
+    radius=3
+    n_points=24
+    X_lbp_features = []
+
+    for i in range(len(training)):
+        X_batch, y_batch = next(training)
+
+        # Convert each image in the batch to grayscale and apply LBP
+        for img in X_batch:
+            img_gray = rgb2gray(img)  # Convert to grayscale
+            lbp_features = apply_lbp(img_gray, radius, n_points)  
+
+            #flatten the LBP result to use it as a feature vector
+            lbp_flatten = lbp_features.flatten()
+
+            X_lbp_features.append(lbp_flatten)
+
+    img_example, label_example = next(training)
+    img_gray = rgb2gray(img_example[0])  # Convert the first image to grayscale
+
+    # Apply LBP to the grayscale image
+    lbp_example = apply_lbp(img_gray, radius, n_points)
+
+    # Plot original image and LBP result
+    plt.figure(figsize=(10, 5))
+
+    plt.subplot(1, 2, 1)
+    plt.imshow(img_example[0])
+    plt.title('Original Image')
+
+    plt.subplot(1, 2, 2)
+    plt.imshow(lbp_example, cmap='gray')
+    plt.title('LBP Image')
+    
+    plt.show()

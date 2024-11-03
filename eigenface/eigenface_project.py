@@ -6,7 +6,7 @@ def eigenface_project(images, xPixel=48, yPixel=48, cum=0.9):
         cum: the minimum cumulative variance to consider
         xPixel, yPixel: the number of pixels on both axises
     Returns:
-        df_project: the projected data set
+        images_project: the projected data set
     """
     import numpy as np
     import pandas as pd
@@ -35,5 +35,5 @@ def eigenface_project(images, xPixel=48, yPixel=48, cum=0.9):
     k = np.argmax(cumulative_variance > 0.9)
     selected_eigenvectors = eigenvectors[:, :k]
 
-    df_project = np.dot(centered_images.reshape(images.shape[0], -1), selected_eigenvectors)
-    return df_project
+    images_project = np.dot(centered_images.reshape(images.shape[0], -1), selected_eigenvectors)
+    return images_project

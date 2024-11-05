@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from skimage.feature import local_binary_pattern
 from skimage.color import rgb2gray
-
+import pandas as pd
 
 
 
@@ -38,35 +38,63 @@ if __name__ == '__main__':
     radius=3
     n_points=24
     X_lbp_features = []
-
+    y_labels = []
     for i in range(len(training)):
         X_batch, y_batch = next(training)
-
-        # Convert each image in the batch to grayscale and apply LBP
-        for img in X_batch:
+    
+        for img, label in zip(X_batch, y_batch):
             img_gray = rgb2gray(img)  # Convert to grayscale
-            lbp_features = apply_lbp(img_gray, radius, n_points)  
-
-            #flatten the LBP result to use it as a feature vector
-            lbp_flatten = lbp_features.flatten()
-
+            lbp_features = apply_lbp(img_gray, radius, n_points)
+            lbp_flatten = lbp_features.flatten()  # Flatten LBP features to 1D array
+    
             X_lbp_features.append(lbp_flatten)
-
-    img_example, label_example = next(training)
-    img_gray = rgb2gray(img_example[0])  # Convert the first image to grayscale
+            y_labels.append(np.argmax(label))
+            
+            
+            
+    #img_example, label_example = next(training)
+    #img_gray = rgb2gray(img_example[0])  # Convert the first image to grayscale
 
     # Apply LBP to the grayscale image
-    lbp_example = apply_lbp(img_gray, radius, n_points)
+    #lbp_example = apply_lbp(img_gray, radius, n_points)
 
     # Plot original image and LBP result
-    plt.figure(figsize=(10, 5))
+    #plt.figure(figsize=(10, 5))
 
-    plt.subplot(1, 2, 1)
-    plt.imshow(img_example[0])
-    plt.title('Original Image')
+    #plt.subplot(1, 2, 1)
+    #plt.imshow(img_example[0])
+    #plt.title('Original Image')
 
-    plt.subplot(1, 2, 2)
-    plt.imshow(lbp_example, cmap='gray')
-    plt.title('LBP Image')
+    #plt.subplot(1, 2, 2)
+    #plt.imshow(lbp_example, cmap='gray')
+    #plt.title('LBP Image')
     
-    plt.show()
+    #plt.show()
+    
+    
+    X_lbp_features = np.load('X_lbp_features.npy')
+    y_labels = np.load('y_labels.npy')
+    np.save('X_lbp_features.npy', X_lbp_features)
+    np.save('y_labels.npy', y_labels)
+    data = pd.DataFrame(X_lbp_features)
+    data['label'] = y_labels 
+    data.to_csv('lbp_features.csv', index=False)  
+    
+    
+    
+    
+    X_lbp_features = np.load('X_lbp_features.npy')
+    y_labels = np.load('y_labels.npy')
+    
+    
+    
+    data = pd.read_csv('lbp_features.csv')
+    print("First few rows of the CSV file:\n", data.head(10))
+    #first_vector = data.iloc[0, :-1]  # All columns except the last one (label)
+    #first_label = data.iloc[0, -1]    # The last column (label)
+    #print("\nFirst feature vector from CSV:\n", first_vector.values)
+    #print("Label for the first image from CSV:", first_label)
+    
+    
+    print("Rows 28700:28705 of the CSV file:\n", data.iloc[28700:28705])
+    

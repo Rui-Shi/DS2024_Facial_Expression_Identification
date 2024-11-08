@@ -1,100 +1,145 @@
+import os
+import cv2
 import numpy as np
-import matplotlib.pyplot as plt
+import pandas as pd
+import random
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from skimage.feature import local_binary_pattern
 from skimage.color import rgb2gray
-import pandas as pd
-
 
 
 train_dir = r'C:\Users\whisk\OneDrive\Desktop\ERDOS WORK\train'
-# Define an ImageDataGenerator without augmentation for loading
-datagen = ImageDataGenerator(rescale=1./255)  # Rescale pixel values to [0, 1], nomalization
-
-# Load the images and labels from the directory
-training = datagen.flow_from_directory(train_dir,target_size=(48, 48),batch_size=16,class_mode='categorical',shuffle=False)
+balanced_dir = os.path.expanduser('~/Downloads/fer2013/train_balanced')
+os.makedirs(balanced_dir, exist_ok=True)
 
 
-print(training.class_indices)
+datagen = ImageDataGenerator(rescale=1./255)
+training = datagen.flow_from_directory(train_dir, target_size=(48, 48), batch_size=16, class_mode='categorical', shuffle=False)
+
+
+train_images = []
+train_labels = []
+for _ in range(len(training)):
+    X_batch, y_batch = next(training)
+    train_images.extend(X_batch)
+    train_labels.extend(np.argmax(y_batch, axis=1))  
+
+
+num_images_to_keep = 5000
+balanced_images = []
+balanced_labels = []
+
+
+happy_images = [img for img, label in zip(train_images, train_labels) if label == 3]  # Assuming '3' is happy
+if len(happy_images) > num_images_to_keep:
+    selected_happy_images = random.sample(happy_images, num_images_to_keep)
+else:
+    selected_happy_images = happy_images
+balanced_images.extend(selected_happy_images)
+balanced_labels.extend([3] * len(selected_happy_images))
+
+
+def augment_image(image):
+    """Applies random augmentations to an image using OpenCV."""
+    
+    if random.random() > 0.5:
+        image = cv2.flip(image, 1)
+    
+    angle = random.uniform(-10, 10)
+    M = cv2.getRotationMatrix2D((image.shape[1] / 2, image.shape[0] / 2), angle, 1)
+    image = cv2.warpAffine(image, M, (image.shape[1], image.shape[0]))
+
+    tx = random.uniform(-0.1, 0.1) * image.shape[1]
+    ty = random.uniform(-0.1, 0.1) * image.shape[0]
+    M = np.float32([[1, 0, tx], [0, 1, ty]])
+    image = cv2.warpAffine(image, M, (image.shape[1], image.shape[0]))
+
+    scale = random.uniform(0.8, 1.2)
+    image = cv2.resize(image, None, fx=scale, fy=scale, interpolation=cv2.INTER_LINEAR)
+
+    brightness = random.uniform(0.8, 1.2)
+    contrast = random.uniform(0.8, 1.2)
+    image = np.clip(brightness * image + contrast, 0, 1)
+
+    return image
+
+
+categories_to_augment = {
+    1: 5000,  
+    6: 5000,  
+    2: 5000,  
+    0: 5000   
+}
+
+for category, target_count in categories_to_augment.items():
+    category_images = [img for img, label in zip(train_images, train_labels) if label == category]
+    balanced_images.extend(category_images)
+    balanced_labels.extend([category] * len(category_images))
+    
+    # Augment to reach the target count
+    num_augmentations_needed = target_count - len(category_images)
+    for _ in range(num_augmentations_needed):
+        image = random.choice(category_images)
+        augmented_image = augment_image(image)
+        balanced_images.append(augmented_image)
+        balanced_labels.append(category)
+
+
+unaltered_categories = [5, 4] 
+for category in unaltered_categories:
+    category_images = [img for img, label in zip(train_images, train_labels) if label == category]
+    balanced_images.extend(category_images)
+    balanced_labels.extend([category] * len(category_images))
+
+
+for label in set(balanced_labels):
+    label_dir = os.path.join(balanced_dir, str(label))
+    os.makedirs(label_dir, exist_ok=True)
+    
+for i, (img, label) in enumerate(zip(balanced_images, balanced_labels)):
+    img_path = os.path.join(balanced_dir, str(label), f"{label}_{i}.png")
+    cv2.imwrite(img_path, (img * 255).astype('uint8'))
+
+print("Dataset balancing complete. Saved to:", balanced_dir)
+
+# ====== FEATURE EXTRACTION ON BALANCED DATASET ======
 
 def apply_lbp(image, radius, n_points):
-    """
-    Apply Local Binary Pattern (LBP) to an image.
-
-    Parameters:
-    - image: The input image (grayscale).
-    - radius: The radius of the circular LBP neighborhood.
-    - n_points: Number of points to consider in the neighborhood.
-
-    Returns:
-    - LBP feature array.
-    """
     lbp = local_binary_pattern(image, n_points, radius, method="uniform")
     return lbp
 
+# LBP Parameters
+radius = 3
+n_points = 24
+X_lbp_features = []
+y_labels = []
 
 
-if __name__ == '__main__':   
-    radius=3
-    n_points=24
-    X_lbp_features = []
-    y_labels = []
-    for i in range(len(training)):
-        X_batch, y_batch = next(training)
-    
-        for img, label in zip(X_batch, y_batch):
-            img_gray = rgb2gray(img)  # Convert to grayscale
-            lbp_features = apply_lbp(img_gray, radius, n_points)
-            lbp_flatten = lbp_features.flatten()  # Flatten LBP features to 1D array
-    
-            X_lbp_features.append(lbp_flatten)
-            y_labels.append(np.argmax(label))
-            
-            
-            
-    #img_example, label_example = next(training)
-    #img_gray = rgb2gray(img_example[0])  # Convert the first image to grayscale
+for label in os.listdir(balanced_dir):
+    label_dir = os.path.join(balanced_dir, label)
+    for img_file in os.listdir(label_dir):
+        img_path = os.path.join(label_dir, img_file)
+        img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)  
 
-    # Apply LBP to the grayscale image
-    #lbp_example = apply_lbp(img_gray, radius, n_points)
+        
+        img_resized = cv2.resize(img, (48, 48))
 
-    # Plot original image and LBP result
-    #plt.figure(figsize=(10, 5))
+        
+        lbp_features = apply_lbp(img_resized, radius, n_points)
+        lbp_flatten = lbp_features.flatten()
 
-    #plt.subplot(1, 2, 1)
-    #plt.imshow(img_example[0])
-    #plt.title('Original Image')
+        X_lbp_features.append(lbp_flatten)
+        y_labels.append(int(label))
 
-    #plt.subplot(1, 2, 2)
-    #plt.imshow(lbp_example, cmap='gray')
-    #plt.title('LBP Image')
-    
-    #plt.show()
-    
-    
-    X_lbp_features = np.load('X_lbp_features.npy')
-    y_labels = np.load('y_labels.npy')
-    np.save('X_lbp_features.npy', X_lbp_features)
-    np.save('y_labels.npy', y_labels)
-    data = pd.DataFrame(X_lbp_features)
-    data['label'] = y_labels 
-    data.to_csv('lbp_features.csv', index=False)  
-    
-    
-    
-    
-    X_lbp_features = np.load('X_lbp_features.npy')
-    y_labels = np.load('y_labels.npy')
-    
-    
-    
-    data = pd.read_csv('lbp_features.csv')
-    print("First few rows of the CSV file:\n", data.head(10))
-    #first_vector = data.iloc[0, :-1]  # All columns except the last one (label)
-    #first_label = data.iloc[0, -1]    # The last column (label)
-    #print("\nFirst feature vector from CSV:\n", first_vector.values)
-    #print("Label for the first image from CSV:", first_label)
-    
-    
-    print("Rows 28700:28705 of the CSV file:\n", data.iloc[28700:28705])
-    
+
+X_lbp_features = np.array(X_lbp_features)
+y_labels = np.array(y_labels)
+np.save('X_lbp_features.npy', X_lbp_features)
+np.save('y_labels.npy', y_labels)
+
+
+data = pd.DataFrame(X_lbp_features)
+data['label'] = y_labels
+data.to_csv('lbp_features.csv', index=False)
+
+print("LBP feature extraction complete and saved.")

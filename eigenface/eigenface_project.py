@@ -36,4 +36,4 @@ def eigenface_project(images, xPixel=48, yPixel=48, cum=0.9):
     selected_eigenvectors = eigenvectors[:, :k]
 
     images_project = np.dot(centered_images.reshape(images.shape[0], -1), selected_eigenvectors)
-    return images_project
+    return images_project, selected_eigenvectors

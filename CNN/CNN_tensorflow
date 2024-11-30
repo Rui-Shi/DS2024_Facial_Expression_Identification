@@ -1,0 +1,324 @@
+
+"""
+%runfile C:/Users/whisk/OneDrive/Desktop/research/untitled1.py --wdir
+Num GPUs Available: 0
+Found 28709 images belonging to 7 classes.
+Found 7178 images belonging to 7 classes.
+Categories and number of images in each category:
+angry: 3995 images
+disgust: 436 images
+fear: 4097 images
+happy: 7215 images
+neutral: 4965 images
+sad: 4830 images
+surprise: 3171 images
+Categories and number of images in each category:
+angry: 958 images
+disgust: 111 images
+fear: 1024 images
+happy: 1774 images
+neutral: 1233 images
+sad: 1247 images
+surprise: 831 images
+Epoch 1/60
+898/898 [==============================] - 35s 38ms/step - loss: 2.0666 - accuracy: 0.2308 - val_loss: 1.6621 - val_accuracy: 0.3405
+Epoch 2/60
+898/898 [==============================] - 33s 36ms/step - loss: 1.6952 - accuracy: 0.3251 - val_loss: 1.6509 - val_accuracy: 0.3395
+Epoch 3/60
+898/898 [==============================] - 33s 37ms/step - loss: 1.5706 - accuracy: 0.3871 - val_loss: 1.4392 - val_accuracy: 0.4443
+Epoch 4/60
+898/898 [==============================] - 34s 37ms/step - loss: 1.4941 - accuracy: 0.4241 - val_loss: 1.4349 - val_accuracy: 0.4493
+Epoch 5/60
+898/898 [==============================] - 33s 37ms/step - loss: 1.4565 - accuracy: 0.4397 - val_loss: 1.4062 - val_accuracy: 0.4674
+Epoch 6/60
+898/898 [==============================] - 34s 38ms/step - loss: 1.4220 - accuracy: 0.4541 - val_loss: 1.3818 - val_accuracy: 0.4801
+Epoch 7/60
+898/898 [==============================] - 36s 40ms/step - loss: 1.3922 - accuracy: 0.4663 - val_loss: 1.2784 - val_accuracy: 0.5106
+Epoch 8/60
+898/898 [==============================] - 36s 40ms/step - loss: 1.3667 - accuracy: 0.4766 - val_loss: 1.3138 - val_accuracy: 0.5014
+Epoch 9/60
+898/898 [==============================] - 37s 41ms/step - loss: 1.3471 - accuracy: 0.4905 - val_loss: 1.2726 - val_accuracy: 0.5026
+Epoch 10/60
+898/898 [==============================] - 39s 44ms/step - loss: 1.3330 - accuracy: 0.4973 - val_loss: 1.3585 - val_accuracy: 0.4767
+Epoch 11/60
+898/898 [==============================] - 38s 42ms/step - loss: 1.3116 - accuracy: 0.5001 - val_loss: 1.1884 - val_accuracy: 0.5464
+Epoch 12/60
+898/898 [==============================] - 38s 42ms/step - loss: 1.2962 - accuracy: 0.5057 - val_loss: 1.2087 - val_accuracy: 0.5352
+Epoch 13/60
+898/898 [==============================] - 37s 42ms/step - loss: 1.2882 - accuracy: 0.5099 - val_loss: 1.2421 - val_accuracy: 0.5265
+Epoch 14/60
+898/898 [==============================] - 37s 42ms/step - loss: 1.2839 - accuracy: 0.5146 - val_loss: 1.2077 - val_accuracy: 0.5437
+Epoch 15/60
+898/898 [==============================] - 38s 42ms/step - loss: 1.2714 - accuracy: 0.5190 - val_loss: 1.2916 - val_accuracy: 0.5114
+Epoch 16/60
+898/898 [==============================] - 38s 43ms/step - loss: 1.2674 - accuracy: 0.5203 - val_loss: 1.1839 - val_accuracy: 0.5460
+Epoch 17/60
+898/898 [==============================] - 38s 43ms/step - loss: 1.2572 - accuracy: 0.5245 - val_loss: 1.1380 - val_accuracy: 0.5678
+Epoch 18/60
+898/898 [==============================] - 38s 42ms/step - loss: 1.2476 - accuracy: 0.5299 - val_loss: 1.1663 - val_accuracy: 0.5593
+Epoch 19/60
+898/898 [==============================] - 38s 42ms/step - loss: 1.2390 - accuracy: 0.5311 - val_loss: 1.1363 - val_accuracy: 0.5635
+Epoch 20/60
+898/898 [==============================] - 38s 42ms/step - loss: 1.2327 - accuracy: 0.5355 - val_loss: 1.2027 - val_accuracy: 0.5506
+Epoch 21/60
+898/898 [==============================] - 38s 43ms/step - loss: 1.2285 - accuracy: 0.5367 - val_loss: 1.2912 - val_accuracy: 0.5125
+Epoch 22/60
+898/898 [==============================] - 38s 42ms/step - loss: 1.2199 - accuracy: 0.5399 - val_loss: 1.2502 - val_accuracy: 0.5288
+Epoch 23/60
+898/898 [==============================] - 36s 41ms/step - loss: 1.2194 - accuracy: 0.5402 - val_loss: 1.1033 - val_accuracy: 0.5841
+Epoch 24/60
+898/898 [==============================] - 38s 42ms/step - loss: 1.2133 - accuracy: 0.5438 - val_loss: 1.1837 - val_accuracy: 0.5546
+Epoch 25/60
+898/898 [==============================] - 38s 42ms/step - loss: 1.2080 - accuracy: 0.5445 - val_loss: 1.0990 - val_accuracy: 0.5818
+Epoch 26/60
+898/898 [==============================] - 38s 43ms/step - loss: 1.2021 - accuracy: 0.5480 - val_loss: 1.1362 - val_accuracy: 0.5648
+Epoch 27/60
+898/898 [==============================] - 37s 41ms/step - loss: 1.1990 - accuracy: 0.5488 - val_loss: 1.1150 - val_accuracy: 0.5829
+Epoch 28/60
+898/898 [==============================] - 35s 39ms/step - loss: 1.2005 - accuracy: 0.5497 - val_loss: 1.0873 - val_accuracy: 0.5889
+Epoch 29/60
+898/898 [==============================] - 38s 43ms/step - loss: 1.1901 - accuracy: 0.5526 - val_loss: 1.1518 - val_accuracy: 0.5673
+Epoch 30/60
+898/898 [==============================] - 37s 42ms/step - loss: 1.1876 - accuracy: 0.5549 - val_loss: 1.1465 - val_accuracy: 0.5669
+Epoch 31/60
+898/898 [==============================] - 38s 42ms/step - loss: 1.1906 - accuracy: 0.5515 - val_loss: 1.1432 - val_accuracy: 0.5617
+Epoch 32/60
+898/898 [==============================] - 38s 43ms/step - loss: 1.1791 - accuracy: 0.5561 - val_loss: 1.1946 - val_accuracy: 0.5628
+Epoch 33/60
+898/898 [==============================] - 40s 44ms/step - loss: 1.1752 - accuracy: 0.5619 - val_loss: 1.1594 - val_accuracy: 0.5676
+Epoch 34/60
+898/898 [==============================] - 38s 42ms/step - loss: 1.1787 - accuracy: 0.5569 - val_loss: 1.1112 - val_accuracy: 0.5790
+Epoch 35/60
+898/898 [==============================] - 39s 44ms/step - loss: 1.1738 - accuracy: 0.5580 - val_loss: 1.0923 - val_accuracy: 0.5844
+Epoch 36/60
+898/898 [==============================] - 38s 43ms/step - loss: 1.1728 - accuracy: 0.5569 - val_loss: 1.1502 - val_accuracy: 0.5666
+Epoch 37/60
+898/898 [==============================] - 39s 44ms/step - loss: 1.1676 - accuracy: 0.5631 - val_loss: 1.0735 - val_accuracy: 0.5910
+Epoch 38/60
+898/898 [==============================] - 39s 44ms/step - loss: 1.1649 - accuracy: 0.5623 - val_loss: 1.1037 - val_accuracy: 0.5800
+Epoch 39/60
+898/898 [==============================] - 39s 43ms/step - loss: 1.1537 - accuracy: 0.5680 - val_loss: 1.1347 - val_accuracy: 0.5646
+Epoch 40/60
+898/898 [==============================] - 40s 45ms/step - loss: 1.1662 - accuracy: 0.5645 - val_loss: 1.1134 - val_accuracy: 0.5807
+Epoch 41/60
+898/898 [==============================] - 39s 43ms/step - loss: 1.1573 - accuracy: 0.5655 - val_loss: 1.0928 - val_accuracy: 0.5822
+Epoch 42/60
+898/898 [==============================] - 39s 44ms/step - loss: 1.1503 - accuracy: 0.5682 - val_loss: 1.1271 - val_accuracy: 0.5717
+Epoch 43/60
+898/898 [==============================] - 37s 42ms/step - loss: 1.1487 - accuracy: 0.5687 - val_loss: 1.0703 - val_accuracy: 0.5868
+Epoch 44/60
+898/898 [==============================] - 37s 41ms/step - loss: 1.1526 - accuracy: 0.5663 - val_loss: 1.1587 - val_accuracy: 0.5680
+Epoch 45/60
+898/898 [==============================] - 38s 43ms/step - loss: 1.1441 - accuracy: 0.5710 - val_loss: 1.0722 - val_accuracy: 0.5984
+Epoch 46/60
+898/898 [==============================] - 39s 44ms/step - loss: 1.1343 - accuracy: 0.5779 - val_loss: 1.1258 - val_accuracy: 0.5743
+Epoch 47/60
+898/898 [==============================] - 40s 45ms/step - loss: 1.1395 - accuracy: 0.5726 - val_loss: 1.0445 - val_accuracy: 0.6039
+Epoch 48/60
+898/898 [==============================] - 39s 44ms/step - loss: 1.1388 - accuracy: 0.5730 - val_loss: 1.1572 - val_accuracy: 0.5641
+Epoch 49/60
+898/898 [==============================] - 43s 48ms/step - loss: 1.1353 - accuracy: 0.5741 - val_loss: 1.0380 - val_accuracy: 0.6056
+Epoch 50/60
+898/898 [==============================] - 36s 40ms/step - loss: 1.1361 - accuracy: 0.5749 - val_loss: 1.0487 - val_accuracy: 0.5989
+Epoch 51/60
+898/898 [==============================] - 37s 41ms/step - loss: 1.1378 - accuracy: 0.5732 - val_loss: 1.0557 - val_accuracy: 0.5964
+Epoch 52/60
+898/898 [==============================] - 37s 41ms/step - loss: 1.1365 - accuracy: 0.5765 - val_loss: 1.1290 - val_accuracy: 0.5699
+Epoch 53/60
+898/898 [==============================] - 37s 41ms/step - loss: 1.1203 - accuracy: 0.5802 - val_loss: 1.1543 - val_accuracy: 0.5677
+Epoch 54/60
+898/898 [==============================] - 38s 42ms/step - loss: 1.1254 - accuracy: 0.5796 - val_loss: 1.0989 - val_accuracy: 0.5853
+Epoch 55/60
+898/898 [==============================] - 39s 44ms/step - loss: 1.1263 - accuracy: 0.5811 - val_loss: 1.1556 - val_accuracy: 0.5621
+Epoch 56/60
+898/898 [==============================] - 39s 44ms/step - loss: 1.1200 - accuracy: 0.5822 - val_loss: 1.1454 - val_accuracy: 0.5743
+Epoch 57/60
+898/898 [==============================] - 39s 44ms/step - loss: 1.1210 - accuracy: 0.5816 - val_loss: 1.1845 - val_accuracy: 0.5573
+Epoch 58/60
+898/898 [==============================] - 39s 43ms/step - loss: 1.1207 - accuracy: 0.5838 - val_loss: 1.1435 - val_accuracy: 0.5731
+Epoch 59/60
+898/898 [==============================] - 39s 44ms/step - loss: 1.1177 - accuracy: 0.5837 - val_loss: 1.3528 - val_accuracy: 0.4716
+225/225 [==============================] - 4s 16ms/step - loss: 1.0380 - accuracy: 0.6056
+Test Loss: 1.0380, Test Accuracy: 0.6056
+"""
+
+
+
+
+
+
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from skimage.feature import local_binary_pattern
+from skimage.color import rgb2gray
+from sklearn.model_selection import StratifiedKFold, train_test_split
+from sklearn.model_selection import GridSearchCV, cross_val_score
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+from xgboost import XGBClassifier
+from sklearn.metrics import accuracy_score, classification_report
+import tensorflow as tf
+print("Num GPUs Available:", len(tf.config.list_physical_devices('GPU')))
+gpus = tf.config.experimental.list_physical_devices('GPU')
+if gpus:
+    try:
+        for gpu in gpus:
+            tf.config.experimental.set_memory_growth(gpu, True)
+    except RuntimeError as e:
+        print(e)
+# Paths for training and testing directories
+train_dir = r'C:\Users\whisk\OneDrive\Desktop\ERDOS WORK\train_original'
+testin_dir = r'C:\Users\whisk\OneDrive\Desktop\ERDOS WORK\test'
+
+# Data Generators
+datagen_train = ImageDataGenerator(
+    rescale=1./255,
+    rotation_range=20,
+    width_shift_range=0.2,
+    height_shift_range=0.2,
+    zoom_range=0.2,
+    horizontal_flip=True
+)
+datagen_test = ImageDataGenerator(rescale=1./255)
+
+# Load the images and labels from the directory
+training = datagen_train.flow_from_directory(
+    train_dir,
+    target_size=(48, 48),
+    batch_size=32,
+    color_mode='grayscale',
+    class_mode='categorical',
+    shuffle=True
+)
+testing = datagen_test.flow_from_directory(
+    testin_dir,
+    target_size=(48, 48),
+    batch_size=32,
+    color_mode='grayscale',
+    class_mode='categorical',
+    shuffle=False
+)
+# Print category information
+print("Categories and number of images in each category:")
+for category, index in training.class_indices.items():
+    num_images = sum(training.classes == index)
+    print(f"{category}: {num_images} images")
+print("Categories and number of images in each category:")
+for category, index in testing.class_indices.items():
+    num_images = sum(testing.classes == index)
+    print(f"{category}: {num_images} images")
+
+
+
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.callbacks import EarlyStopping
+from tensorflow.keras.utils import to_categorical
+from tensorflow.keras.layers import BatchNormalization
+
+if __name__ == '__main__':
+    
+    """
+    Need some CNN drop out
+    """
+    # Paths and Parameters
+    batch_size = 32
+    num_classes = len(training.class_indices)  # Number of categories
+    input_shape = (48, 48, 3)  # Image dimensions (adjust based on your dataset)
+    epochs = 60
+    learning_rate = 0.0005
+
+    # Extract raw images and labels from the training generator
+    X_images = []
+    y_labels = []
+
+    for i in range(len(training)):
+        X_batch, y_batch = next(training)
+        for img, label in zip(X_batch, y_batch):
+            X_images.append(img)  # Keep the original image
+            y_labels.append(np.argmax(label))  # Convert one-hot encoding to class labels
+
+    X_images = np.array(X_images)
+    y_labels = np.array(y_labels)
+
+    # Split raw training set into train_train and train_test
+    X_train_train, X_train_test, y_train_train, y_train_test = train_test_split(
+        X_images, y_labels, test_size=0.2, random_state=42
+    )
+
+    # Convert labels to one-hot encoding for CNN
+    y_train_train = to_categorical(y_train_train, num_classes)
+    y_train_test = to_categorical(y_train_test, num_classes)
+
+    # CNN Model
+    model = Sequential([
+        Conv2D(32, (3, 3), activation='relu', input_shape=(48, 48, 1)),
+        BatchNormalization(),
+        MaxPooling2D((2, 2)),
+        Conv2D(64, (3, 3), activation='relu'),
+        BatchNormalization(),
+        MaxPooling2D((2, 2)),
+        Conv2D(128, (3, 3), activation='relu'),
+        BatchNormalization(),
+        MaxPooling2D((2, 2)),
+        Flatten(),
+        Dense(128, activation='relu'),
+        BatchNormalization(),
+        Dropout(0.5),
+        Dense(len(training.class_indices), activation='softmax')
+    ])
+    
+    # Compile the model
+    model.compile(
+        optimizer=Adam(learning_rate=0.001),
+        loss='categorical_crossentropy',
+        metrics=['accuracy']
+    )
+    
+    # Early stopping to prevent overfitting
+    early_stopping = EarlyStopping(
+        monitor='val_loss',
+        patience= 10,
+        restore_best_weights=True
+    )
+    
+    # Train the model
+    history = model.fit(
+        training,
+        validation_data=testing,
+        epochs=epochs,
+        callbacks=[early_stopping]
+    )
+    
+    # Evaluate the model
+    test_loss, test_accuracy = model.evaluate(testing)
+    print(f"Test Loss: {test_loss:.4f}, Test Accuracy: {test_accuracy:.4f}")
+    
+    # Save the model
+    model.save('cnn_model.h5')
+    
+    # Plot Training History
+    plt.figure(figsize=(12, 4))
+    plt.subplot(1, 2, 1)
+    plt.plot(history.history['accuracy'], label='Train Accuracy')
+    plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
+    plt.legend()
+    plt.title('Accuracy')
+    
+    plt.subplot(1, 2, 2)
+    plt.plot(history.history['loss'], label='Train Loss')
+    plt.plot(history.history['val_loss'], label='Validation Loss')
+    plt.legend()
+    plt.title('Loss')
+    plt.show()
+        
+    
+    
+   

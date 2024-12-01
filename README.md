@@ -132,10 +132,17 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
 *  Gabor Filter & PCA + MediaPipe & PCA + XGBoost: 60% accuracy and F1-score 59%.
 **Selected Classification Methods with Confusion Matrix**
 
-    <p align="center">
-      <img src="images_for_readme\ConMtxRF.png" width="350" title="MediaPipe & PCA + Gabor Filter & PCA + RandomForest"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-      <img src="images_for_readme\ConMatrixXGB.png" width="345" title="MediaPipe & PCA + Gabor Filter & PCA + XGBoost">
-    </p>
+  <p align="center">
+    <figure style="display: inline-block; text-align: center; margin: 0 20px;">
+        <img src="images_for_readme/ConMtxRF.png" width="350" alt="Confusion Matrix for Random Forest">
+        <figcaption>MediaPipe & PCA + Gabor Filter & PCA + RandomForest</figcaption>
+    </figure>
+    <figure style="display: inline-block; text-align: center; margin: 0 20px;">
+        <img src="images_for_readme/ConMatrixXGB.png" width="345" alt="Confusion Matrix for XGBoost">
+        <figcaption>MediaPipe & PCA + Gabor Filter & PCA + XGBoost</figcaption>
+    </figure>
+</p>
+
     <p align="center">
       <img src="images_for_readme\ConMatrix_PCA_Randomforest.png" width="30%" title="Confusion Matrix: PCA + Randomforest"> &nbsp; &nbsp;
       <img src="images_for_readme\ConMatrix_PCA_XGB.png" width="30%" title="Confusion Matrix: PCA + XGBoost"> &nbsp; &nbsp; 

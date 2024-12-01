@@ -130,16 +130,16 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
 *   Gabor Filter & PCA + MediaPipe & PCA + XGBoost: Delivered the best F1-score of 59% and 60% accuracy, demonstrating the effectiveness of integrating geometric facial landmarks (MediaPipe) with Gabor-based texture features.
 *    MediaPipe & PCA + Gabor Filter & PCA+Randomforest: 49% accuracy and 0.48 F1-score.
 *  Gabor Filter & PCA + MediaPipe & PCA + XGBoost: 60% accuracy and F1-score 59%.
+
 **Selected Classification Methods with Confusion Matrix**
-<p align="center" style="display: flex; justify-content: center; gap: 40px;">
+<div style="display: flex; justify-content: center; gap: 40px; align-items: flex-start;">
     <div style="text-align: center;">
         <p>MediaPipe & PCA + Gabor Filter & PCA + RandomForest</p>
         <img src="images_for_readme/ConMtxRF.png" width="350" alt="Confusion Matrix for Random Forest">
-    <div style="text-align: center;">
         <p>MediaPipe & PCA + Gabor Filter & PCA + XGBoost</p>
         <img src="images_for_readme/ConMatrixXGB.png" width="345" alt="Confusion Matrix for XGBoost">
     </div>
-</p>
+</div>
     <p align="center">
       <img src="images_for_readme\ConMatrix_PCA_Randomforest.png" width="30%" title="Confusion Matrix: PCA + Randomforest"> &nbsp; &nbsp;
       <img src="images_for_readme\ConMatrix_PCA_XGB.png" width="30%" title="Confusion Matrix: PCA + XGBoost"> &nbsp; &nbsp; 

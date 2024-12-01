@@ -4,7 +4,7 @@ Data Science Project for Erdos institution (fall 2024)
 # Wiki:
 *Folder:*
 - raw_data: the original training and testing images.
-- train_balanced: the training data set after data augmentation, making sure the trainning data set is balanced.
+- train_balanced: the training data set after data augmentation, making sure the training data set is balanced.
 - raw_data_to_csv: a csv containing the greyscale of each image.
 - eigenface: the classifiers using eigenfaces for data preprocessing.
 - Gabor Filter: the classifiers using Gabor filter for image processing.
@@ -56,7 +56,7 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
             * Number of orientation bins: 4-10
         * **Output:** Gradient histograms focusing on local intensity changes in the images.
     <p align="center">
-      <img src="images_for_readme\HOG_Demo.png" width="350" title="Demo: HOG">
+      <img src="images_for_readme\HOG_demo.png" width="350" title="Demo: HOG">
     </p>
 
     2. **Local Binary Patterns (LBP):**
@@ -111,7 +111,7 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
 
 ## Results and Preliminary Insights
 
-**Feature-Based Models: Performance Highlights**
+**Feature-Based Models: Performance Highlights with some confusion matrices**
 
 **Overall Accuracy and weighted F1 scores**
 
@@ -126,15 +126,24 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
 *   MediaPipe + PCA + KNN:34% accuracy and 0.34 F1-score
 *   MediaPipe + PCA + Random Forest:52% accuracy and 0.50 F1-score
 *   MediaPipe & PCA + Gabor Filter & PCA+Randomforest: 49% accuracy and 0.48 F1-score
-*   HOG & PCA + Gabor Filter & PCA+ XGBoost: Got 54% accuracy and 0.53 F1-score after intensive grid search and cross-validation. Highlighting the potential of combining gradient-based (HOG) and texture-rich (Gabor) features with ensemble learning techniques. 
+*   HOG & PCA + Gabor Filter & PCA+ XGBoost: Got 54% accuracy and 0.53 F1-score after intensive grid search and cross-validation. Highlighting the potential of combining gradient-based (HOG) and texture-rich (Gabor) features with ensemble learning techniques.
+
+**Selected Classification Methods with Confusion Matrix**
+    <p align="center">
+      <img src="images_for_readme\ConMatrix_PCA_Randomforest.png" width="300" title="Confusion Matrix: PCA + Randomforest"> &nbsp; &nbsp; &nbsp;
+      <img src="images_for_readme\ConMatrix_PCA_XGB.png" width="300" title="Confusion Matrix: PCA + XGBoost"> &nbsp; &nbsp; &nbsp; 
+      <img src="images_for_readme\ConMatrix_Gabor_HOG_XGB.png" width="315" title="Confusion Matrix: HOG & PCA + Gabor Filter & PCA + XGBoost">
+    </p>
 *   Gabor Filter & PCA + MediaPipe & PCA + XGBoost: Delivered the best F1-score of 59% and 60% accuracy, demonstrating the effectiveness of integrating geometric facial landmarks (MediaPipe) with Gabor-based texture features.
 
 **Selected Classification Methods with Confusion Matrix**
-*   MediaPipe & PCA + Gabor Filter & PCA+Randomforest: 49% accuracy and 0.48 F1-score
-      <img src="images_for_readme\ConMtxRF.png" width="400" title=".">
+    MediaPipe & PCA + Gabor Filter & PCA+Randomforest: 49% accuracy and 0.48 F1-score
+    <p align="center">
+      <img src="images_for_readme\ConMtxRF.png" width="350" title="."> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+      <img src="images_for_readme\ConMatrixXGB.png" width="345" title=".">
     </p>
-*   Gabor Filter & PCA + MediaPipe & PCA + XGBoost: 60% accuracy and F1-score 59%
-      <img src="images_for_readme\ConMatrixXGB.png" width="400" title=".">
+   Gabor Filter & PCA + MediaPipe & PCA + XGBoost: 60% accuracy and F1-score 59%
+
     </p>
 
 **CNN:** Delivers the test accuracy of 63.39% accuracy and 1.038 test lost. We set the kernel of (3,3), number of filters (32,64,128), learning rate of 0.0005, and 60 epochs.

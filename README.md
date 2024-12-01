@@ -69,6 +69,9 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
     3. **MediaPipe Facial Landmarks:**
         * Extract 478 3D facial landmark points (x, y, z coordinates) per image.
         * **Output:** Landmark-based geometric features representing facial structure.
+            <p align="center">
+      <img src="images_for_readme\MediaPipe_Landmarks.png" width="450" title="Demo: HOG">
+    </p>
 
     4. **Gabor Filter:**
         * Extracts texture features by identifying specific frequencies and orientations.

@@ -133,10 +133,15 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
 
 **Selected Classification Methods with Confusion Matrix**
 <div style="display: flex; justify-content: center; gap: 40px; align-items: flex-start;">
+    <!-- First Image and Title -->
     <div style="text-align: center;">
-        <p>MediaPipe & PCA + Gabor Filter & PCA + RandomForest</p>
-        <img src="images_for_readme/ConMtxRF.png" width="350" alt="Confusion Matrix for Random Forest">&nbsp; &nbsp; &nbsp; &nbsp; 
-        <p>MediaPipe & PCA + Gabor Filter & PCA + XGBoost</p>
+        <p style="margin: 0;">MediaPipe & PCA + Gabor Filter & PCA + RandomForest</p>
+        <img src="images_for_readme/ConMtxRF.png" width="350" alt="Confusion Matrix for Random Forest">
+    </div>
+
+    <!-- Second Image and Title -->
+    <div style="text-align: center;">
+        <p style="margin: 0;">MediaPipe & PCA + Gabor Filter & PCA + XGBoost</p>
         <img src="images_for_readme/ConMatrixXGB.png" width="345" alt="Confusion Matrix for XGBoost">
     </div>
 </div>

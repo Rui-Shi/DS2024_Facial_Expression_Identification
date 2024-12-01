@@ -131,10 +131,13 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
 
 **Selected Classification Methods with Confusion Matrix**
 *   MediaPipe & PCA + Gabor Filter & PCA+Randomforest: 49% accuracy and 0.48 F1-score
-  
+   <p align="center">
+      <img src="images_for_readme\ConMtxRF.png" width="400" title=".">
+    </p>
 *   Gabor Filter & PCA + MediaPipe & PCA + XGBoost: 60% accuracy and F1-score 59%
-  
-
+ <p align="center">
+      <img src="images_for_readme\ConMatrixXGB.png" width="400" title=".">
+    </p>
 
 **CNN:** Delivers the test accuracy of 63.39% accuracy and 1.038 test lost. We set the kernel of (3,3), number of filters (32,64,128), learning rate of 0.0005, and 60 epochs.
 

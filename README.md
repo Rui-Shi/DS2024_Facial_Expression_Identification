@@ -135,7 +135,6 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
     <div style="text-align: center;">
         <p>MediaPipe & PCA + Gabor Filter & PCA + RandomForest</p>
         <img src="images_for_readme/ConMtxRF.png" width="350" alt="Confusion Matrix for Random Forest">
-    </div>
     <div style="text-align: center;">
         <p>MediaPipe & PCA + Gabor Filter & PCA + XGBoost</p>
         <img src="images_for_readme/ConMatrixXGB.png" width="345" alt="Confusion Matrix for XGBoost">

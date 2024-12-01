@@ -56,7 +56,7 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
             * Number of orientation bins: 4-10
         * **Output:** Gradient histograms focusing on local intensity changes in the images.
     <p align="center">
-      <img src="images_for_readme\HOG_demo.png" width="350" title="Demo: HOG">
+      <img src="images_for_readme\HOG_Demo.png" width="350" title="Demo: HOG">
     </p>
 
     2. **Local Binary Patterns (LBP):**

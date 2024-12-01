@@ -129,12 +129,19 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
 *   HOG & PCA + Gabor Filter & PCA+ XGBoost: Got 54% accuracy and 0.53 F1-score after intensive grid search and cross-validation. Highlighting the potential of combining gradient-based (HOG) and texture-rich (Gabor) features with ensemble learning techniques. 
 *   Gabor Filter & PCA + MediaPipe & PCA + XGBoost: Delivered the best F1-score of 59% and 60% accuracy, demonstrating the effectiveness of integrating geometric facial landmarks (MediaPipe) with Gabor-based texture features.
 
+**Selected Classification Methods with Confusion Matrix**
+*   MediaPipe & PCA + Gabor Filter & PCA+Randomforest: 49% accuracy and 0.48 F1-score
+  
+*   Gabor Filter & PCA + MediaPipe & PCA + XGBoost: 60% accuracy and F1-score 59%
+  
+
+
 **CNN:** Delivers the test accuracy of 63.39% accuracy and 1.038 test lost. We set the kernel of (3,3), number of filters (32,64,128), learning rate of 0.0005, and 60 epochs.
 
 
 **Deep Learning Models**
 
-*   **Performance:** Our CNN experiments achieved around 61% accuracy, approaching Kaggle's record of 65% accuracy using neural networks on the FER2013 dataset (Kaggle reference). This highlights the potential of deep learning for FER tasks, particularly when leveraging advanced augmentation and optimization techniques.
+*   **Performance:** Our CNN experiments achieved around 63% accuracy, approaching Kaggle's record of 65% accuracy using neural networks on the FER2013 dataset (Kaggle reference). This highlights the potential of deep learning for FER tasks, particularly when leveraging advanced augmentation and optimization techniques.
 
 **Efficiency Trade-offs**
 

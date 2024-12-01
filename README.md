@@ -1,5 +1,15 @@
 # DS2024_facial_expression
 Data Science Project for Erdos institution (fall 2024)
+
+# Wiki:
+*Folder:*
+- raw_data: the original training and testing images.
+- train_balanced: the training data set after data augmentation, making sure the trainning data set is balanced.
+- raw_data_to_csv: a csv containing the greyscale of each image.
+- eigenface: the classifiers using eigenfaces for data preprocessing.
+- Gabor Filter: the classifiers using Gabor filter for image processing.
+- MediaPipe: the classifiers using mediapipe for feature extraction.
+
 # Facial Emotion Recognition (FER) Project
 
 ## Background and Introduction

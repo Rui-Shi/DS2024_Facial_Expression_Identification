@@ -131,7 +131,7 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
 *   MediaPipe & PCA + Gabor Filter & PCA+Randomforest: 49% accuracy and 0.48 F1-score.
 *   Gabor Filter & PCA + MediaPipe & PCA + XGBoost: 60% accuracy and F1-score 0.59.
 
-**Selected Confusion Matrices of Some Classifiers**
+**Selected Confusion Matrices of Some Classifiers:**
 <div style="display: flex; justify-content: center; gap: 40px; align-items: flex-start;">
     <!-- First Image and Title -->
     <div style="text-align: center;">

@@ -19,9 +19,6 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
 
 **Team members:** Yuting Ma, Rui Shi, Menglei Wang, Jiayi Wang
 
-**GitHub:** https://github.com/Rui-Shi/DS2024_facial_expression
-
-
 ## Background and Introduction
 
 **Motivation:** Facial expressions are a universal form of non-verbal communication. Recognizing these expressions can enhance human-computer interaction, improve accessibility technologies, and enable impactful applications such as mental health monitoring and customer sentiment analysis. Despite advances in the field, creating an accurate and computationally efficient Facial Emotion Recognition (FER) system remains challenging due to imbalanced datasets, real-world variability, and resource constraints.
@@ -65,15 +62,15 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
             * Radius: 1–3 pixels.
             * Neighbors: 8–24 points.
         * **Output:** Histograms representing frequency distributions of patterns for efficient feature representation. However, the output is often binary for simplicity when using the uniform method.
-          <p align="center">
-      <img src="images_for_readme\LBP.png" width="300" title="Confusion Matrix: HOG & PCA + Gabor Filter & PCA + XGBoost">
+    <p align="center">
+      <img src="images_for_readme\LBP.png" width="300" title="Demo: LBP">
     </p>
 
     3. **MediaPipe Facial Landmarks:**
         * Extract 478 3D facial landmark points (x, y, z coordinates) per image.
         * **Output:** Landmark-based geometric features representing facial structure.
       <p align="center">
-      <img src="images_for_readme\MediaPipe_Landmarks.png" width="300" title="MediaPipe">
+      <img src="images_for_readme\MediaPipe_Landmarks.png" width="40%" title="MediaPipe">
     </p>
 
     4. **Gabor Filter:**
@@ -118,8 +115,8 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
 
 **Overall Accuracy and weighted F1 scores**
 
-*   PCA + Logistic Regression (baseline): Obtained an accuracy of 37% and F1-score of 0.35.
-*   PCA + KNN: When k=1, it achieved the best accuracy of 40% and F1-score of 0.40.
+*   PCA + Logistic Regression (baseline): Obtained an accuracy of 37% and a F1-score of 0.35.
+*   PCA + KNN: When k=1, it achieved the best performance with 40% accuracy and 0.40 F1-score.
 *   PCA + Randomforest: Got 45% accuracy and 0.41 F1-score after intensive grid search and cross-validation.
 *   PCA + XGBoost: 48% accuracy and 0.46 F1-score after intensive grid search and cross-validation.
 *   LBP + KNN: 29.38% accuracy and 0.3 F1-score.
@@ -130,26 +127,26 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
 *   MediaPipe + PCA + Random Forest:52% accuracy and 0.50 F1-score.
 *   MediaPipe & PCA + Gabor Filter & PCA+Randomforest: 49% accuracy and 0.48 F1-score.
 *   HOG & PCA + Gabor Filter & PCA+ XGBoost: Got 54% accuracy and 0.53 F1-score after intensive grid search and cross-validation. Highlighting the potential of combining gradient-based (HOG) and texture-rich (Gabor) features with ensemble learning techniques.
-*   Gabor Filter & PCA + MediaPipe & PCA + XGBoost: Delivered the best F1-score of 59% and 60% accuracy, demonstrating the effectiveness of integrating geometric facial landmarks (MediaPipe) with Gabor-based texture features.
-*    MediaPipe & PCA + Gabor Filter & PCA+Randomforest: 49% accuracy and 0.48 F1-score.
-*  Gabor Filter & PCA + MediaPipe & PCA + XGBoost: 60% accuracy and F1-score 59%.
+*   Gabor Filter & PCA + MediaPipe & PCA + XGBoost: Delivered the best F1-score of 0.59 and 60% accuracy, demonstrating the effectiveness of integrating geometric facial landmarks (MediaPipe) with Gabor-based texture features.
+*   MediaPipe & PCA + Gabor Filter & PCA+Randomforest: 49% accuracy and 0.48 F1-score.
+*   Gabor Filter & PCA + MediaPipe & PCA + XGBoost: 60% accuracy and F1-score 0.59.
 
-**Selected Classification Methods with Confusion Matrix**
+**Selected Confusion Matrices of Some Classifiers**
 <div style="display: flex; justify-content: center; gap: 40px; align-items: flex-start;">
     <!-- First Image and Title -->
     <div style="text-align: center;">
         <p style="margin: 0;">MediaPipe & PCA + Gabor Filter & PCA + RandomForest</p>
-        <img src="images_for_readme/ConMtxRF.png" width="350" alt="Confusion Matrix for Random Forest">
+        <img src="images_for_readme/ConMtxRF.png" width="70%" alt="Confusion Matrix for Random Forest">
     </div>
     <div style="text-align: center;">
         <p style="margin: 0;">MediaPipe & PCA + Gabor Filter & PCA + XGBoost</p>
-        <img src="images_for_readme/ConMatrixXGB.png" width="345" alt="Confusion Matrix for XGBoost">
+        <img src="images_for_readme/ConMatrixXGB.png" width="70%" alt="Confusion Matrix for XGBoost">
     </div>
 </div>
     <p align="center">
-      <img src="images_for_readme\ConMatrix_PCA_Randomforest.png" width="30%" title="Confusion Matrix: PCA + Randomforest"> &nbsp; &nbsp;
-      <img src="images_for_readme\ConMatrix_PCA_XGB.png" width="30%" title="Confusion Matrix: PCA + XGBoost"> &nbsp; &nbsp; 
-      <img src="images_for_readme\ConMatrix_Gabor_HOG_XGB.png" width="31%" title="Confusion Matrix: HOG & PCA + Gabor Filter & PCA + XGBoost">
+      <img src="images_for_readme\ConMatrix_PCA_Randomforest.png" width="31%" title="Confusion Matrix: PCA + Randomforest"> &nbsp; &nbsp;
+      <img src="images_for_readme\ConMatrix_PCA_XGB.png" width="31%" title="Confusion Matrix: PCA + XGBoost"> &nbsp; &nbsp; 
+      <img src="images_for_readme\ConMatrix_Gabor_HOG_XGB.png" width="32%" title="Confusion Matrix: HOG & PCA + Gabor Filter & PCA + XGBoost">
     </p>
 
 

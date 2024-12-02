@@ -153,9 +153,13 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
 **CNN:** Delivers the test accuracy of 63.39% accuracy and 1.038 test lost. We set the kernel of (3,3), number of filters (32,64,128), learning rate of 0.0005, and 60 epochs.
 
 
+**TransferLearning Approach(ResNet50):** The learning approach with ResNet50 leverages this 50-layer deep convolutional neural network, pre-trained on ImageNet, for facial emotion recognition with the FER-2013 dataset. Replacing the connected layers designed for ImageNet classification with a task-specific layer outputting the number of emotion classes, the model is fine-tuned to recognize emotions. This approach achieves over 65% accuracy, combining the robustness of pre-trained features with the adaptability of fine-tuning for emotion classification.
+
+
+
 **Deep Learning Models**
 
-*   **Performance:** Our CNN experiments achieved around 63% accuracy, approaching Kaggle's record of 65% accuracy using neural networks on the FER2013 dataset (Kaggle reference). This highlights the potential of deep learning for FER tasks, particularly when leveraging advanced augmentation and optimization techniques.
+*   **Performance:** Our ResNet50 experiments achieved over 65% accuracy, beats Kaggle's record using neural networks on the FER2013 dataset (Kaggle reference). This highlights the potential of deep learning for FER tasks, particularly when leveraging advanced augmentation and optimization techniques.
 
 **Efficiency Trade-offs**
 

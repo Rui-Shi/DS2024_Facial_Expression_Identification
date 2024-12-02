@@ -66,7 +66,7 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
             * Neighbors: 8–24 points.
         * **Output:** Histograms representing frequency distributions of patterns for efficient feature representation. However, the output is often binary for simplicity when using the uniform method.
           <p align="center">
-      <img src="LBP.png" width="400" title="Confusion Matrix: HOG & PCA + Gabor Filter & PCA + XGBoost">
+      <img src="images_for_readme\LBP.png" width="350" title="Confusion Matrix: HOG & PCA + Gabor Filter & PCA + XGBoost">
     </p>
 
     3. **MediaPipe Facial Landmarks:**
@@ -155,7 +155,7 @@ Facial Expression | Data Augmentation | Feature Extraction | Image Filters | Eig
 
 **CNN:** Delivers the test accuracy of 63.39% accuracy and 1.038 test lost. We set the kernel of (3,3), number of filters (32,64,128), learning rate of 0.0005, and 60 epochs.
 <p align="center">
-      <img src="images_for_readme\cnn.png" width="450" title="Confusion Matrix: HOG & PCA + Gabor Filter & PCA + XGBoost">
+      <img src="images_for_readme\cnn.png" width="500" title="Confusion Matrix: HOG & PCA + Gabor Filter & PCA + XGBoost">
     </p>
 
 

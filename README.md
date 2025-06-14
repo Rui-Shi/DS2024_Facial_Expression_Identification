@@ -54,7 +54,7 @@ The FER-2013 dataset has inspired numerous studies. Notable baselines include fe
 
 The repository is organized into the following directories:
 
--   **`Data and Data Preprocessing`**: Contains notebooks for data importation, augmentation, and Histogram of Oriented Gradients (HOG) feature extraction.
+-   **`Data_Preprocessing`**: Contains notebooks for data importation, augmentation, and Histogram of Oriented Gradients (HOG) feature extraction.
 -   **`CNN`**: Includes Jupyter notebooks for the Convolutional Neural Network (CNN) models built with PyTorch and Tensorflow.
 -   **`eigenface`**: Contains scripts and notebooks for implementing Eigenfaces (PCA) for feature extraction and classification models like K-Nearest Neighbors (KNN), Logistic Regression, Random Forest, and XGBoost.
 -   **`Gabor Filter`**: Includes notebooks for using Gabor filters combined with HOG for feature extraction and an XGBoost classifier.

@@ -29,7 +29,7 @@ Data Science Project for Erdos Institution (Fall 2024)
 ## 🌟 Project Overview
 
 ### Motivation
-Facial expressions are a universal form of non-verbal communication. Recognizing these expressions can enhance human-computer interaction, improve accessibility technologies, and enable impactful applications such as mental health monitoring and customer sentiment analysis. Despite advances in the field, creating an accurate and computationally efficient Facial Emotion Recognition (FER) system remains challenging due to imbalanced datasets, real-world variability, and resource constraints.
+Facial expressions are a universal form of non-verbal communication. Recognizing these expressions can enhance human-computer interaction, improve accessibility technologies, and enable impactful applications such as mental health monitoring and customer sentiment analysis. Despite advances in the field, creating an accurate and computationally efficient Facial Emotion Recognition (FER) system remains challenging due to imbalanced datasets, face position on the image, real-world variability, and resource constraints.
 
 ### Dataset
 The project leverages the **FER-2013 dataset**, consisting of 48x48 pixel grayscale facial images across seven emotion categories: anger, disgust, fear, happiness, sadness, surprise, and neutral. This dataset, sourced from Kaggle, consists of 28,709 training images and 7,178 testing images. The original images are stored in the `raw_data` folder.
@@ -52,15 +52,14 @@ The FER-2013 dataset has inspired numerous studies. Notable baselines include fe
 
 ## 📁 Repository Structure
 
-This project is organized into several key folders:
+The repository is organized into the following directories:
 
--   **`raw_data`**: Contains the original training and testing images from the FER-2013 dataset.
--   **`train_balanced`**: Stores the training dataset after data augmentation techniques have been applied to ensure the dataset is balanced across emotion categories.
--   **`raw_data_to_csv`**: Holds a CSV file containing the grayscale pixel values for each image, facilitating easier data loading and initial processing.
--   **`eigenface`**: Includes scripts and classifiers that utilize Eigenfaces (PCA) for data preprocessing and feature extraction.
--   **`Gabor Filter`**: Contains scripts and classifiers employing Gabor filters for image feature extraction.
--   **`MediaPipe`**: Includes scripts and classifiers that use MediaPipe for extracting facial landmarks as features.
--   **`images_for_readme`**: Contains all images and visual aids used within this README file.
+-   **`Data and Data Preprocessing`**: Contains notebooks for data importation, augmentation, and Histogram of Oriented Gradients (HOG) feature extraction.
+-   **`CNN`**: Includes Jupyter notebooks for the Convolutional Neural Network (CNN) models built with PyTorch and Tensorflow.
+-   **`eigenface`**: Contains scripts and notebooks for implementing Eigenfaces (PCA) for feature extraction and classification models like K-Nearest Neighbors (KNN), Logistic Regression, Random Forest, and XGBoost.
+-   **`Gabor Filter`**: Includes notebooks for using Gabor filters combined with HOG for feature extraction and an XGBoost classifier.
+-   **`MediaPipe`**: Contains notebooks that leverage the MediaPipe library for facial landmark detection, combined with Gabor filters and various classifiers (Random Forest, XGBoost, KNN).
+-   **`images_for_readme`**: Stores images and visual aids used in this README file.
 
 ---
 
@@ -218,4 +217,4 @@ This approach leverages the 50-layer deep ResNet50, pre-trained on ImageNet. The
 
 ## ✨ Concluding Remarks
 
-The proposed FER system aims to provide a robust framework for recognizing emotions, balancing accuracy and efficiency. By comparing traditional machine learning and deep learning approaches, we aim to uncover valuable insights for deploying FER solutions in real-world scenarios. This project will serve as a benchmark for future developments in facial emotion recognition.
+This project successfully explored a diverse range of techniques for facial expression recognition, from classic machine learning pipelines to modern deep learning architectures. Our findings reveal a clear performance advantage for deep learning, with the custom CNN model achieving the highest accuracy. However, feature-based methods, particularly the combination of MediaPipe, Gabor filters, and XGBoost, offer a compelling balance of performance and computational efficiency. This work not only provides a comprehensive comparison of various FER techniques but also lays the groundwork for developing practical, real-world applications in areas such as human-computer interaction and mental health monitoring. The journey through this project underscores the immense potential of both traditional and deep learning approaches in understanding and interpreting human emotions.

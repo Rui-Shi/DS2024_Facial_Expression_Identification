@@ -56,8 +56,8 @@ The repository is organized into the following directories:
 
 -   **`Data_Preprocessing`**: Contains notebooks for data importation, augmentation, and Histogram of Oriented Gradients (HOG) feature extraction.
 -   **`CNN`**: Includes Jupyter notebooks for the Convolutional Neural Network (CNN) models built with PyTorch and Tensorflow.
--   **`eigenface`**: Contains scripts and notebooks for implementing Eigenfaces (PCA) for feature extraction and classification models like K-Nearest Neighbors (KNN), Logistic Regression, Random Forest, and XGBoost.
--   **`Gabor Filter`**: Includes notebooks for using Gabor filters combined with HOG for feature extraction and an XGBoost classifier.
+-   **`EigenFace`**: Contains scripts and notebooks for implementing Eigenfaces (PCA) for feature extraction and classification models like K-Nearest Neighbors (KNN), Logistic Regression, Random Forest, and XGBoost.
+-   **`GaborFilter`**: Includes notebooks for using Gabor filters combined with HOG for feature extraction and an XGBoost classifier.
 -   **`MediaPipe`**: Contains notebooks that leverage the MediaPipe library for facial landmark detection, combined with Gabor filters and various classifiers (Random Forest, XGBoost, KNN).
 -   **`images_for_readme`**: Stores images and visual aids used in this README file.
 
@@ -68,14 +68,14 @@ The repository is organized into the following directories:
 ### Data Preprocessing and Augmentation
 
 1.  **Standardization**: Images are resized to 48x48 pixels and denoised to improve quality. The initial conversion of images to grayscale numerical data is available in the `raw_data_to_csv` folder.
-2.  **Data Augmentation**: To address class imbalance, minority classes are augmented using transformation techniques such as rotation, flipping, and zooming. Some majority classes are downsampled. The resulting balanced dataset is found in the `train_balanced` folder.
+2.  **Data Augmentation**: To address class imbalance, minority classes are augmented using transformation techniques such as rotation, flipping, and zooming. The resulting balanced dataset is found in the `train_balanced` folder.
 
 ### Feature Extraction Techniques
 
 We explore multiple feature extraction techniques. Implementations and specific models related to MediaPipe, Gabor Filter, and Eigenface methods can be found in their respective folders: `MediaPipe`, `Gabor Filter`, and `eigenface`.
 
 1.  **Histogram of Oriented Gradients (HOG):**
-    * Extracts gradient-based features to emphasize edges and textures.
+    * HOG captures the shape of an object by describing its local intensity gradients and edge directions
     * **Parameters:**
         * Cell size: 4-16
         * Block size: 2-4
@@ -86,7 +86,7 @@ We explore multiple feature extraction techniques. Implementations and specific 
     </p>
 
 2.  **Local Binary Patterns (LBP):**
-    * Captures texture patterns using uniform LBP configurations.
+    * LBP captures local texture by comparing each pixel to its neighbors, generating a binary code.
     * **Parameters:**
         * Radius: 1–3 pixels.
         * Neighbors: 8–24 points.
@@ -96,14 +96,14 @@ We explore multiple feature extraction techniques. Implementations and specific 
     </p>
 
 3.  **MediaPipe Facial Landmarks:**
-    * Extracts 478 3D facial landmark points (x, y, z coordinates) per image.
+    * MediaPipe, developed by google, use pre-trained model to extract high-level features.
     * **Output:** Landmark-based geometric features representing facial structure. (Associated scripts in `MediaPipe` folder)
     <p align="center">
       <img src="images_for_readme/MediaPipe_Landmarks.png" width="40%" title="MediaPipe Landmarks">
     </p>
 
 4.  **Gabor Filter:**
-    * Extracts texture features by identifying specific frequencies and orientations. (Associated scripts in `Gabor Filter` folder)
+    * A Gabor filter identifies textures and edges by applying a localized wave tuned to a specific orientation and frequency, think about put an image behind a binds. (Associated scripts in `Gabor Filter` folder)
     * **Parameters:** Wavelength ($\lambda$), Orientation ($\theta$), Phase offset ($\phi$), Aspect ratio ($\gamma$), Bandwidth ($\sigma$)
     * **Output:** Response map highlighting edges and textures.
     <p align="center">
@@ -183,20 +183,28 @@ We explore multiple feature extraction techniques. Implementations and specific 
 ### Deep Learning Models Performance
 
 **Custom CNN:**
-Achieved a test accuracy of **63.39%** with a test loss of 1.038.
-* Kernel size: (3,3)
-* Number of filters: (32, 64, 128)
-* Learning rate: 0.0005
-* Epochs: 60
+Achieved a test accuracy of **63.39%** with a F1-score of **0.696**.
+* **Architecture:** A deep CNN (~15 layers) featuring several convolutional blocks and a 3-layer classifier.
+* **Feature Extractor:**
+    * Uses a `(3,3)` kernel size throughout.
+    * Filter depth increases progressively from 32 to 512 `(32 -> 64 -> 128 -> 256 -> 512)`.
+    * Each block includes `ReLU`, `BatchNorm2d`, and `Dropout(0.25)`.
+* **Classifier:**
+    * Processes a flattened feature vector of size 18,432.
+    * Maps features through a `512 -> 256 -> 7` dense layer structure.
+    * Includes `BatchNorm1d` and heavy `Dropout` (up to 0.5).
+* **Output:** 7 Classes.
+* **Learning rate**: 0.0005
+* **Epochs**: 50
 <p align="center">
-  <img src="images_for_readme/cnn.png" width="600" title="CNN Performance Metrics and Confusion Matrix">
+  <img src="images_for_readme/CNN.png" width="600" title="CNN learning curve">
 </p>
 
 **Transfer Learning Approach (ResNet50):**
 This approach leverages the 50-layer deep ResNet50, pre-trained on ImageNet. The model was fine-tuned on FER-2013 by replacing the final classification layer.
 * Achieved over **65% accuracy**, surpassing some Kaggle benchmarks for neural networks on the FER2013 dataset.
 <p align="center">
-  <img src="images_for_readme/Resnet.png" width="400" title="ResNet50 Performance Metrics and Confusion Matrix">
+  <img src="images_for_readme/Resnet.png" width="400" title="ResNet50 learning curve">
 </p>
 
 ### Efficiency Trade-offs

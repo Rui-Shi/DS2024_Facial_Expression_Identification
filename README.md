@@ -88,7 +88,7 @@ The repository is organized into the following directories:
 
 ### Data Preprocessing and Augmentation
 
-1.  **Standardization**: Images are resized to 48x48 pixels and denoised to improve quality. The initial conversion of images to grayscale numerical data is available in the `raw_data_to_csv` folder.
+1.  **Image to Numeric Numbers**: Images are resized to 48x48 pixels and denoised to improve quality. The initial conversion of images to grayscale numerical data is available in the `raw_data_to_csv` folder.
 2.  **Data Augmentation**: To address class imbalance, minority classes are augmented using transformation techniques such as rotation, flipping, and zooming. The resulting balanced dataset is found in the `train_balanced` folder.
 
 ### Feature Extraction Techniques
@@ -167,17 +167,15 @@ We explore multiple feature extraction techniques. Implementations and specific 
 **Selected Confusion Matrices of Some Classifiers:**
 
 <p align="center">
-  <em>MediaPipe & PCA + Gabor Filter & PCA + RandomForest</em><br>
-  <img src="images_for_readme/ConMtxRF.png" width="45%" alt="Confusion Matrix for MediaPipe & PCA + Gabor Filter & PCA + RandomForest">
+  <em>MediaPipe & PCA + Gabor Filter & PCA + RandomForest/XGBoost</em><br>
+  <img src="images_for_readme/ConMtxRF.png" width="33%" alt="Confusion Matrix for MediaPipe & PCA + Gabor Filter & PCA + RandomForest">
+  <img src="images_for_readme/ConMatrixXGB.png" width="33%" alt="Confusion Matrix for MediaPipe & PCA + Gabor Filter & PCA + XGBoost">
 </p>
+
 <p align="center">
-  <em>MediaPipe & PCA + Gabor Filter & PCA + XGBoost</em><br>
-  <img src="images_for_readme/ConMatrixXGB.png" width="45%" alt="Confusion Matrix for MediaPipe & PCA + Gabor Filter & PCA + XGBoost">
-</p>
-<p align="center">
-  <img src="images_for_readme/ConMatrix_PCA_Randomforest.png" width="31%" title="Confusion Matrix: PCA + Random Forest">
-  <img src="images_for_readme/ConMatrix_PCA_XGB.png" width="31%" title="Confusion Matrix: PCA + XGBoost">
-  <img src="images_for_readme/ConMatrix_Gabor_HOG_XGB.png" width="32%" title="Confusion Matrix: HOG & PCA + Gabor Filter & PCA + XGBoost">
+  <img src="images_for_readme/ConMatrix_PCA_Randomforest.png" width="30%" title="Confusion Matrix: PCA + Random Forest">
+  <img src="images_for_readme/ConMatrix_PCA_XGB.png" width="30%" title="Confusion Matrix: PCA + XGBoost">
+  <img src="images_for_readme/ConMatrix_Gabor_HOG_XGB.png" width="30%" title="Confusion Matrix: HOG & PCA + Gabor Filter & PCA + XGBoost">
 </p>
 
 ### Deep Learning Models Performance

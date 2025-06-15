@@ -48,6 +48,27 @@ The primary performance metrics include **Accuracy**, **F1-score**, and analysis
 ### Related Work
 The FER-2013 dataset has inspired numerous studies. Notable baselines include feature-based simple classifiers (e.g., logistic regression). Our project aims to expand on this by integrating advanced data preprocessing, augmentation, feature extraction, ensemble techniques, and Neural Networks.
 
+### Modeling Approaches
+
+1.  **Feature-Based Approaches:**
+    * Employs traditional classifiers such as K-Nearest Neighbors (KNN), Support Vector Machines (SVM), Random Forest, and Logistic Regression.
+    * Ensemble methods like XGBoost are used for enhanced performance.
+
+2.  **Deep Learning Approaches:**
+    * **Custom CNN:** Design and train Convolutional Neural Networks (CNN) tailored to the FER-2013 dataset.
+        * **Training Techniques:**
+            * Loss: Categorical cross-entropy.
+            * Optimizer: Adam with dynamic learning rate scheduling.
+            * Data Augmentation: Transformations applied dynamically during training.
+            * Regularization: Early stopping and dropout to reduce overfitting.
+    * **Transfer Learning (ResNet50):** Leverages a pre-trained ResNet50 model, fine-tuned for emotion classification.
+
+### Evaluation Metrics for the testing images
+
+* **Quantitative Metrics:** Accuracy, precision, recall, F1-score, ROC-AUC.
+* **Efficiency Metrics:** Inference time, model size, and resource usage.
+* **Confusion Matrix Analysis:** Identify and address misclassifications across different classes.
+
 ---
 
 ## 📁 Repository Structure
@@ -99,11 +120,11 @@ We explore multiple feature extraction techniques. Implementations and specific 
     * MediaPipe, developed by google, use pre-trained model to extract high-level features.
     * **Output:** Landmark-based geometric features representing facial structure. (Associated scripts in `MediaPipe` folder)
     <p align="center">
-      <img src="images_for_readme/MediaPipe_Landmarks.png" width="40%" title="MediaPipe Landmarks">
+      <img src="images_for_readme/MediaPipe_Landmarks.png" width="20%" title="MediaPipe Landmarks">
     </p>
 
 4.  **Gabor Filter:**
-    * A Gabor filter identifies textures and edges by applying a localized wave tuned to a specific orientation and frequency, think about put an image behind a binds. (Associated scripts in `Gabor Filter` folder)
+    * A Gabor filter identifies textures and edges by applying a localized wave tuned to a specific orientation and frequency, think about put an image behind a blind. (Associated scripts in `Gabor Filter` folder)
     * **Parameters:** Wavelength ($\lambda$), Orientation ($\theta$), Phase offset ($\phi$), Aspect ratio ($\gamma$), Bandwidth ($\sigma$)
     * **Output:** Response map highlighting edges and textures.
     <p align="center">
@@ -120,27 +141,6 @@ We explore multiple feature extraction techniques. Implementations and specific 
     <p align="center">
       <img src="images_for_readme/Eigenface_demo.png" width="600" title="Demo: Eigenface Extraction">
     </p>
-
-### Modeling Approaches
-
-1.  **Feature-Based Approaches:**
-    * Employs traditional classifiers such as K-Nearest Neighbors (KNN), Support Vector Machines (SVM), Random Forest, and Logistic Regression.
-    * Ensemble methods like XGBoost are used for enhanced performance.
-
-2.  **Deep Learning Approaches:**
-    * **Custom CNN:** Design and train Convolutional Neural Networks (CNN) tailored to the FER-2013 dataset.
-        * **Training Techniques:**
-            * Loss: Categorical cross-entropy.
-            * Optimizer: Adam with dynamic learning rate scheduling.
-            * Data Augmentation: Transformations applied dynamically during training.
-            * Regularization: Early stopping and dropout to reduce overfitting.
-    * **Transfer Learning (ResNet50):** Leverages a pre-trained ResNet50 model, fine-tuned for emotion classification.
-
-### Evaluation Metrics for the testing images
-
-* **Quantitative Metrics:** Accuracy, precision, recall, F1-score, ROC-AUC.
-* **Efficiency Metrics:** Inference time, model size, and resource usage.
-* **Confusion Matrix Analysis:** Identify and address misclassifications across different classes.
 
 ---
 
@@ -183,7 +183,7 @@ We explore multiple feature extraction techniques. Implementations and specific 
 ### Deep Learning Models Performance
 
 **Custom CNN:**
-Achieved a test accuracy of **63.39%** with a F1-score of **0.696**.
+Achieved a test accuracy of **63.39%** with a F1-score of **0.654**.
 * **Architecture:** A deep CNN (~15 layers) featuring several convolutional blocks and a 3-layer classifier.
 * **Feature Extractor:**
     * Uses a `(3,3)` kernel size throughout.
@@ -201,8 +201,8 @@ Achieved a test accuracy of **63.39%** with a F1-score of **0.696**.
 </p>
 
 **Transfer Learning Approach (ResNet50):**
-This approach leverages the 50-layer deep ResNet50, pre-trained on ImageNet. The model was fine-tuned on FER-2013 by replacing the final classification layer.
-* Achieved over **65% accuracy**, surpassing some Kaggle benchmarks for neural networks on the FER2013 dataset.
+This approach leverages the 50-layer deep ResNet50, the classification layers was pre-trained on ImageNet.
+* Achieved over **68% accuracy** a F1-score of **0.704**, surpassing all Kaggle benchmarks for neural networks on the FER2013 dataset.
 <p align="center">
   <img src="images_for_readme/Resnet.png" width="400" title="ResNet50 learning curve">
 </p>

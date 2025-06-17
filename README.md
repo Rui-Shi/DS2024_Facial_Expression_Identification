@@ -180,14 +180,14 @@ We explore multiple feature extraction techniques. Implementations and specific 
 
 ### Deep Learning Models Performance
 
-**Custom CNN:**
+**Customlized CNN:**
 Achieved a test accuracy of **63.39%** with a F1-score of **0.654**.
 * **Architecture:** A deep CNN (~15 layers) featuring several convolutional blocks and a 3-layer classifier.
-* **Feature Extractor:**
+* **Feature Extractor (Convolutional Block):**
     * Uses a `(3,3)` kernel size throughout.
     * Filter depth increases progressively from 32 to 512 `(32 -> 64 -> 128 -> 256 -> 512)`.
     * Each block includes `ReLU`, `BatchNorm2d`, and `Dropout(0.25)`.
-* **Classifier:**
+* **Classifier (Classification Block):**
     * Processes a flattened feature vector of size 18,432.
     * Maps features through a `512 -> 256 -> 7` dense layer structure.
     * Includes `BatchNorm1d` and heavy `Dropout` (up to 0.5).
